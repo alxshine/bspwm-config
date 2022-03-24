@@ -13,8 +13,10 @@ kill_thing sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc &
 
 nitrogen --restore
+setxkbmap us,de
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor 0x00400004 -d I II III IV V
+bspc monitor 0x00400002 -d VI VII VIII IX X
 
 bspc config border_width         2
 bspc config window_gap          22
@@ -32,4 +34,4 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 kill_thing dunst
-dust &
+dunst &

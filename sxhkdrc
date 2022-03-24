@@ -17,6 +17,10 @@ super + d
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# switch between keyboard layouts
+ctrl + alt + k
+    xkb-switch -n
+
 #
 # bspwm hotkeys
 #
@@ -30,7 +34,7 @@ super + shift + {_, ctrl + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
-super + m
+super + f
 	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
@@ -39,7 +43,10 @@ super + y
 
 # swap the current node and the biggest window
 super + g
-	bspc node -s biggest.window; bspc node -f biggest.window
+	bspc node -s biggest.window --follow
+
+super + l
+    bsp-layout cycle --layouts rtall,wide
 
 #
 # state/flags
@@ -62,8 +69,8 @@ super + {_,shift + }{h,t,n,s}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+super + {p,b}
+	bspc node -f @{parent,brother}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
@@ -86,6 +93,18 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# select next monitor
+super + period
+    bspc monitor -f next
+
+# swap desktops between monitors
+super + comma
+    bspc desktop -s $(bspc query -m next -D -d .active)
+
+# apply balanced layout
+super + shift + b
+    bsp-layout once even
 
 #
 # preselect
