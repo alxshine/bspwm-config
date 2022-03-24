@@ -17,8 +17,8 @@ setxkbmap us,de
 xrandr --output HDMI-0
 xrandr --output DP-0 --primary --mode 2560x1440 --pos 1920x0
 
-bspc monitor 0x00400004 -d I II III IV V
-bspc monitor 0x00400002 -d VI VII VIII IX X
+bspc monitor '^1' -n left -d F1 F2 F3 F4
+bspc monitor '^2' -n main -d F5 F6 F7 F8
 
 bspc config border_width         2
 bspc config window_gap          22
