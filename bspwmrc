@@ -1,6 +1,12 @@
-#! /bin/sh
+#! /bin/zsh
 
-pgrep -x sxhkd > /dev/null && killall sxhkd || sxhkd -c ~/.config/bspwm/sxhkdrc &
+if (pgrep -x sxhkd); then
+    # echo "sxhkd already running"
+    killall sxhkd
+    # echo "killed, waiting a bit"
+    sleep 0.1
+fi
+sxhkd -c ~/.config/bspwm/sxhkdrc &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
