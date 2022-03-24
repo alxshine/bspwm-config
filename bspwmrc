@@ -14,6 +14,8 @@ sxhkd -c ~/.config/bspwm/sxhkdrc &
 
 nitrogen --restore
 setxkbmap us,de
+xrandr --output HDMI-0
+xrandr --output DP-0 --primary --mode 2560x1440 --pos 1920x0
 
 bspc monitor 0x00400004 -d I II III IV V
 bspc monitor 0x00400002 -d VI VII VIII IX X
