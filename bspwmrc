@@ -9,13 +9,14 @@ kill_thing() {
     fi
 }
 
+try_source () {
+    [[ ! -f "$1" ]] || source "$1"
+}
+
+
 kill_thing sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc &
-
 nitrogen --restore
-setxkbmap us,de
-xrandr --output HDMI-0
-xrandr --output DP-0 --primary --mode 2560x1440 --pos 1920x0
 
 bspc monitor '^1' -n left -d F1 F2 F3 F4
 bspc monitor '^2' -n main -d F5 F6 F7 F8
@@ -37,3 +38,5 @@ bspc rule -a Screenkey manage=off
 
 kill_thing dunst
 dunst &
+
+try_source "$HOME/.config/bspwm/custom.sh"
