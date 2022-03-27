@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 Clock(){
-	TIME=$(date "+%H:%M:%S")
+	TIME=$(date "+%H:%M")
 	echo -e -n "${TIME}"
 }
 
