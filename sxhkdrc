@@ -43,11 +43,12 @@ super + y
 
 # swap the current node and the biggest window
 super + g
-    bspc node -s $(bspc query -N -d focused -n biggest.window) --follow
+    bspc node -s $(bspc query -N -d newest.focused -n biggest.window) --follow
 
 super + l
     bsp-layout cycle --layouts rtall,wide
-
+super + shift + l
+    bsp-layout remove
 #
 # state/flags
 #
