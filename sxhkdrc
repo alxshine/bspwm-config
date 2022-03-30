@@ -13,6 +13,12 @@ super + b
 super + d
 	rofi -show run
 
+# volume controls
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+  pamixer --{decrease,increase} 10
+XF86AudioMute
+  pamixer -t
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
