@@ -98,8 +98,8 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-ctrl + {_,shift + }{F1,F2,F3,F4,F5,F6,F7,F8}
-	bspc {desktop -f,node -d} 'F{1-8}'
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} '{1-9}'
 
 # select next monitor
 super + period

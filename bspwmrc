@@ -14,12 +14,25 @@ try_source () {
 }
 
 
+# launch sxhkd
 kill_thing sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc &
 
-bspc monitor '^1' -n left -d F1 F2 F3 F4
-bspc monitor '^2' -n main -d F5 F6 F7 F8
+# define monitors
+main_monitor=$(xrandr -q | grep primary | cut -f1 -d' ')
+other_monitors=$(xrandr -q | grep ' connect' | grep -v primary | cut -f1 -d' ')
 
+(( desktop_index = 0 ))
+for o_m in $other_monitors; do
+  bspc monitor "$o_m" -d $(( desktop_index++ ))
+done
+
+bspc monitor $main_monitor -d $(( desktop_index++ ))
+while (( desktop_index < 10 )); do
+  bspc monitor $main_monitor -a $(( desktop_index++ ))
+done
+
+# configure ui
 bspc config border_width         2
 bspc config window_gap          22
 
@@ -29,12 +42,6 @@ bspc config gapless_monocle      false
 
 bspc config initial_polarity second_child
 bspc config automatic_scheme alternate
-
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
 
 kill_thing dunst
 dunst &
