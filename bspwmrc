@@ -22,7 +22,7 @@ sxhkd -c ~/.config/bspwm/sxhkdrc &
 main_monitor=$(xrandr -q | grep primary | cut -f1 -d' ')
 other_monitors=$(xrandr -q | grep ' connect' | grep -v primary | cut -f1 -d' ')
 
-(( desktop_index = 0 ))
+(( desktop_index = 1 ))
 for o_m in $other_monitors; do
   bspc monitor "$o_m" -d $(( desktop_index++ ))
 done
