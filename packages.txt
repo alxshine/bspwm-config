@@ -1,2 +1,4 @@
 bspwm
 sxhkd
+playerctl
+pamixer

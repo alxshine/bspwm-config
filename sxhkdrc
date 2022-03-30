@@ -19,6 +19,10 @@ super + d
 XF86AudioMute
   pamixer -t
 
+# media controls
+{XF86AudioPlay,XF86AudioNext,XF86AudioPrev}
+  playerctl {play-pause,next,previous}
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
