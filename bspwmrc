@@ -30,6 +30,8 @@ bspc config gapless_monocle      false
 bspc config initial_polarity second_child
 bspc config automatic_scheme alternate
 
+try_source "$HOME/.config/bspwm/custom.sh"
+
 pkill dunst
 dunst &
 
@@ -43,4 +45,3 @@ for monitor in $(xrandr -q | grep ' connected' | cut -f 1 -d' '); do
   zsh ~/.config/bspwm/panel.sh "$monitor" | lemonbar -o "$monitor" &
 done
 
-try_source "$HOME/.config/bspwm/custom.sh"
