@@ -52,7 +52,7 @@ super + y
 
 # swap the current node and the biggest window
 super + g
-    bspc node -s $(bspc query -N -d newest.focused -n biggest.window) --follow
+    bspc node -s biggest.window.local --follow
 
 super + l
     bsp-layout cycle --layouts rtall,wide
@@ -110,11 +110,11 @@ super + period
     bspc monitor -f next
 
 super + greater
-    bspc node -d $(bspc query -m next -D -d .active) --follow
+    bspc node -d next:focused --follow
 
 # swap desktops between monitors
-super + comma
-    bspc desktop -s $(bspc query -m next -D -d .active)
+super + {_,shift +} comma
+    bspc desktop {-m next,-s next:focused} --follow
 
 # apply balanced layout
 super + shift + b
