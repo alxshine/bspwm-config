@@ -21,7 +21,7 @@ Language(){
 }
 
 Batteries(){
-  printf "BAT: %s %s" $(cat /sys/class/power_supply/BAT0/capacity) `cat /sys/class/power_supply/BAT1/capacity 2>/dev/null`
+  printf "BAT: %s %s" $(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null) $(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null)
 }
 
 desktop=$1
