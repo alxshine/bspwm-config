@@ -39,10 +39,8 @@ sxhkd -c ~/.config/bspwm/sxhkdrc &
 
 monitors=$(xrandr -q | grep ' connected' | cut -f 1 -d' ')
 pkill lemonbar
-for monitor in $monitors; do
+for monitor in $(xrandr -q | grep ' connected' | cut -f 1 -d' '); do
   zsh ~/.config/bspwm/panel.sh "$monitor" | lemonbar -o "$monitor" &
 done
-
-
 
 try_source "$HOME/.config/bspwm/custom.sh"
