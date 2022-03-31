@@ -3,7 +3,7 @@
 Desktops(){
   monitors=$(bspc query -D -m "$1" --names | sort)
   current_monitor=$(bspc query -D -d "$1:focused" --names)
-  printf "%s" "$monitors" | tr -s '\n' ' ' | sed "s/$current_monitor/ +$current_monitor+ /"
+  printf " %s" "$monitors" | tr -s '\n' ' ' | sed "s/$current_monitor/ +$current_monitor+ /"
 }
 
 Clock(){
