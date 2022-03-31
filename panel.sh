@@ -21,12 +21,16 @@ Language(){
 }
 
 Batteries(){
-  printf "BAT: %s %s" $(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null) $(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null)
+  value0=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)
+  value1=$(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null)
+  if [[ -n $value0 ]]; then
+    printf "BAT: %s %s |" $value0 $value1
+  fi
 }
 
 desktop=$1
 
 while true; do
-	echo -e "%{l}$(Desktops $desktop)" "%{c}$(Cal)  $(Clock)" "%{r}$(Batteries) | $(Language)"
+	echo -e "%{l}$(Desktops $desktop)" "%{c}$(Cal)  $(Clock)" "%{r}$(Batteries) $(Language)"
 	sleep 0.1s
 done
