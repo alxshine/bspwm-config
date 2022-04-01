@@ -114,7 +114,7 @@ super + greater
 
 # swap desktops between monitors
 super + {_,shift +} comma
-    bspc desktop {-m next,-s next:focused} --follow
+    bspc desktop {-m next --follow,-s next:focused}
 
 # apply balanced layout
 super + shift + b
